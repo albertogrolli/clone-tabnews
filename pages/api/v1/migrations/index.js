@@ -7,7 +7,7 @@ export default async function migrations(request, response) {
   if (!allowedMethods.includes(request.method)) {
     return response
       .status(405)
-      .json({ error: `Methos ${request.method} not allowed` });
+      .json({ error: `Method ${request.method} not allowed` });
   }
 
   let dbClient;
