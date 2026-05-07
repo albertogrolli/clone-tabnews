@@ -2,8 +2,8 @@ name: Automated Tests
 
 on: pull_request
 
-jobs: 
-  jest: 
+jobs:
+  jest:
     name: Jest Ubuntu
     runs-on: ubuntu-latest
     steps:
