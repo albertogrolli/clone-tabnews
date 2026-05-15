@@ -18,10 +18,7 @@ async function update(username, userInputValues) {
   }
 
   const userWithNewValues = { ...currentUser, ...userInputValues };
-
-  console.log("userWithNewValues", userWithNewValues);
   const updatedUser = await runUpdateQuery(userWithNewValues);
-  console.log("updatedUser", updatedUser);
   return updatedUser;
 
   async function runUpdateQuery(userWithNewValues) {
