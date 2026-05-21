@@ -38,13 +38,13 @@ describe("GET /api/v1/user", () => {
         email: createdUser.email,
         features: [],
         password: createdUser.password,
-        createdAt: createdUser.createdAt.toISOString(),
-        updatedAt: createdUser.updatedAt.toISOString(),
+        created_at: createdUser.created_at.toISOString(),
+        updated_at: createdUser.updated_at.toISOString(),
       });
 
       expect(uuidVersion(responseBody.id)).toBe(4);
-      expect(Date.parse(responseBody.createdAt)).not.toBeNaN();
-      expect(Date.parse(responseBody.updatedAt)).not.toBeNaN();
+      expect(Date.parse(responseBody.created_at)).not.toBeNaN();
+      expect(Date.parse(responseBody.updated_at)).not.toBeNaN();
 
       // Session renewal assertions
       const renewedSessionObject = await session.findOneValidByToken(
@@ -173,8 +173,8 @@ describe("GET /api/v1/user", () => {
         email: createdUser.email,
         features: [],
         password: createdUser.password,
-        createdAt: createdUser.createdAt.toISOString(),
-        updatedAt: createdUser.updatedAt.toISOString(),
+        created_at: createdUser.created_at.toISOString(),
+        updated_at: createdUser.updated_at.toISOString(),
       });
     });
   });

@@ -34,13 +34,13 @@ describe("POST /api/v1/users", () => {
         email: "alberto@grolli.com",
         features: [],
         password: responseBody.password,
-        createdAt: responseBody.createdAt,
-        updatedAt: responseBody.updatedAt,
+        created_at: responseBody.created_at,
+        updated_at: responseBody.updated_at,
       });
 
       expect(uuidVersion(responseBody.id)).toBe(4);
-      expect(Date.parse(responseBody.createdAt)).not.toBeNaN();
-      expect(Date.parse(responseBody.updatedAt)).not.toBeNaN();
+      expect(Date.parse(responseBody.created_at)).not.toBeNaN();
+      expect(Date.parse(responseBody.updated_at)).not.toBeNaN();
 
       const userInDatabase = await user.findOneByUsername("albertogrolli");
       const correctPasswordMatch = await password.compare(

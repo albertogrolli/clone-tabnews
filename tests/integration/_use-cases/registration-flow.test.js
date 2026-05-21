@@ -31,8 +31,8 @@ describe("Use case: Registration Flow (all successful)", () => {
       email: "registration@flow.com",
       features: [],
       password: createUserResponseBody.password,
-      createdAt: createUserResponseBody.createdAt,
-      updatedAt: createUserResponseBody.updatedAt,
+      created_at: createUserResponseBody.created_at,
+      updated_at: createUserResponseBody.updated_at,
     });
   });
 });

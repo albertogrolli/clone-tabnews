@@ -114,11 +114,11 @@ describe("PATCH /api/v1/users/[username]", () => {
         email: uniqueUser1.email,
         features: [],
         password: responseBody.password,
-        createdAt: responseBody.createdAt,
-        updatedAt: responseBody.updatedAt,
+        created_at: responseBody.created_at,
+        updated_at: responseBody.updated_at,
       });
 
-      expect(responseBody.updatedAt > responseBody.createdAt).toBe(true);
+      expect(responseBody.updated_at > responseBody.created_at).toBe(true);
     });
 
     test("With unique 'email'", async () => {
@@ -147,11 +147,11 @@ describe("PATCH /api/v1/users/[username]", () => {
         email: "uniqueemail2@mail.com",
         features: [],
         password: responseBody.password,
-        createdAt: responseBody.createdAt,
-        updatedAt: responseBody.updatedAt,
+        created_at: responseBody.created_at,
+        updated_at: responseBody.updated_at,
       });
 
-      expect(responseBody.updatedAt > responseBody.createdAt).toBe(true);
+      expect(responseBody.updated_at > responseBody.created_at).toBe(true);
     });
 
     test("With new 'password'", async () => {
@@ -180,11 +180,11 @@ describe("PATCH /api/v1/users/[username]", () => {
         email: newPasswordUser.email,
         features: [],
         password: responseBody.password,
-        createdAt: responseBody.createdAt,
-        updatedAt: responseBody.updatedAt,
+        created_at: responseBody.created_at,
+        updated_at: responseBody.updated_at,
       });
 
-      expect(responseBody.updatedAt > responseBody.createdAt).toBe(true);
+      expect(responseBody.updated_at > responseBody.created_at).toBe(true);
 
       const userInDatabase = await user.findOneByUsername(
         newPasswordUser.username,
