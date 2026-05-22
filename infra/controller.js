@@ -1,5 +1,5 @@
 import * as cookie from "cookie";
-import session from "infra/models/session.js";
+import session from "models/session.js";
 
 import {
   MethodNotAllowedError,
