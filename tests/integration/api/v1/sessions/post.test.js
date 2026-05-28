@@ -1,12 +1,13 @@
 import setCookieParser from "set-cookie-parser";
 import orchestrator from "tests/orchestrator.js";
 import { version as uuidVersion } from "uuid";
-import session from "infra/models/session.js";
+import session from "models/session.js";
 
 beforeAll(async () => {
   await orchestrator.waitForAllServices();
   await orchestrator.clearDatabase();
   await orchestrator.runPendingMigrations();
+  await orchestrator.deleteAllEmails();
 });
 
 describe("POST /api/v1/sessions", () => {
@@ -92,6 +93,8 @@ describe("POST /api/v1/sessions", () => {
         email: "tudocorreto@mail.com",
         password: "tudocorreto",
       });
+
+      await orchestrator.activateUser(createdUser);
 
       const response = await fetch("http://localhost:3000/api/v1/sessions", {
         method: "POST",
