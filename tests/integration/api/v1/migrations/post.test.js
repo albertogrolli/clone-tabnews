@@ -36,7 +36,7 @@ describe("POST /api/v1/migrations", () => {
         "create:migration",
       ]);
       privilegedUserSessionObject = await orchestrator.createSession(
-        activatedPrivilegedUser.id,
+        activatedPrivilegedUser,
       );
 
       const response1 = await fetch(`${webServer.origin}/api/v1/migrations`, {
