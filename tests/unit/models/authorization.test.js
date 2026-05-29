@@ -23,7 +23,7 @@ describe("models/authorization.js", () => {
       }).toThrow(InternalServerError);
     });
 
-    test("with valid 'user' and known 'feature'", () => {
+    test("with valid 'user' and known 'feature`", () => {
       const createdUser = { features: ["create:user"] };
       expect(authorization.can(createdUser, "create:user")).toBe(true);
     });
@@ -50,21 +50,21 @@ describe("models/authorization.js", () => {
       }).toThrow(InternalServerError);
     });
 
-    test("with valid 'user', known 'feature', but no 'resource'", () => {
+    test("with valid 'user', known 'feature`, but no `resource`", () => {
       const createdUser = { features: ["read:user"] };
       expect(() => {
         authorization.filterOutput(createdUser, "read:user");
       }).toThrow(InternalServerError);
     });
 
-    test("with valid 'user', known 'feature' and 'resource'", () => {
+    test("with valid 'user', known 'feature` and `resource`", () => {
       const createdUser = { features: ["read:user"] };
       const resource = {
         id: 1,
         username: "resource",
         features: ["read:user"],
-        created_at: "2026-0101T00:00:00.000Z",
-        updated_at: "2026-0101T00:00:00.000Z",
+        created_at: "2026-01-01T00:00:00.000Z",
+        updated_at: "2026-01-01T00:00:00.000Z",
         email: "resource@resource.com",
         password: "resource",
       };
@@ -77,8 +77,8 @@ describe("models/authorization.js", () => {
         id: 1,
         username: "resource",
         features: ["read:user"],
-        created_at: "2026-0101T00:00:00.000Z",
-        updated_at: "2026-0101T00:00:00.000Z",
+        created_at: "2026-01-01T00:00:00.000Z",
+        updated_at: "2026-01-01T00:00:00.000Z",
       });
     });
   });
