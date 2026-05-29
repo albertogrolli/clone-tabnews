@@ -1,4 +1,5 @@
 import orchestrator from "tests/orchestrator.js";
+import webServer from "infra/webServer.js";
 
 beforeAll(async () => {
   await orchestrator.waitForAllServices();
@@ -9,7 +10,7 @@ beforeAll(async () => {
 describe("POST /api/v1/migrations", () => {
   describe("Anonymous user", () => {
     test("Posting to endpoint", async () => {
-      const response1 = await fetch("http://localhost:3000/api/v1/migrations", {
+      const response1 = await fetch(`${webServer.origin}/api/v1/migrations`, {
         method: "POST",
       });
       expect(response1.status).toBe(403);
@@ -18,7 +19,7 @@ describe("POST /api/v1/migrations", () => {
 
   describe("Default user", () => {
     test("Posting to endpoint", async () => {
-      const response1 = await fetch("http://localhost:3000/api/v1/migrations", {
+      const response1 = await fetch(`${webServer.origin}/api/v1/migrations`, {
         method: "POST",
       });
       expect(response1.status).toBe(403);
@@ -38,7 +39,7 @@ describe("POST /api/v1/migrations", () => {
         activatedPrivilegedUser.id,
       );
 
-      const response1 = await fetch("http://localhost:3000/api/v1/migrations", {
+      const response1 = await fetch(`${webServer.origin}/api/v1/migrations`, {
         method: "POST",
         headers: {
           Cookie: `session_id=${privilegedUserSessionObject.token}`,
