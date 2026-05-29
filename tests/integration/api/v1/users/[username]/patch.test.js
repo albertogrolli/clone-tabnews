@@ -240,6 +240,9 @@ describe("PATCH /api/v1/users/[username]", () => {
       });
 
       expect(responseBody.updated_at > responseBody.created_at).toBe(true);
+
+      const userInDatabase = await user.findOneByUsername(createdUser.username);
+      expect(userInDatabase.email).toEqual("uniqueemail2@mail.com");
     });
 
     test("With new 'password'", async () => {
